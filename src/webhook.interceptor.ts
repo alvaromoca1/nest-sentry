@@ -14,7 +14,7 @@ export class WebhookInterceptor implements NestInterceptor {
     intercept(_: ExecutionContext, next: CallHandler) /** : Observable<any>*/ {
         return next.handle().pipe(
             catchError((error) => {
-                const webhook = new IncomingWebhook('https://hooks.slack.com/services/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');
+                const webhook = new IncomingWebhook('https://hooks.slack.com/services/Tcodigo de la app');
                 webhook.send({
                     attachments: [
                         {
