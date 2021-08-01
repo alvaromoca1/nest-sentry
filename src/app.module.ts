@@ -3,6 +3,7 @@ import { AppController } from './app.controller';
 import { RavenInterceptor, RavenModule } from 'nest-raven';
 import { APP_INTERCEPTOR } from '@nestjs/core';
 import { AppService } from './app.service';
+import { WebhookInterceptor } from './webhook.interceptor';
 
 @Module({
   imports: [
@@ -13,6 +14,7 @@ import { AppService } from './app.service';
     AppService,
     {
       provide: APP_INTERCEPTOR, // Designar como interceptor global
+      useClass: WebhookInterceptor,
       useValue: new RavenInterceptor({
         filters: [
           {
